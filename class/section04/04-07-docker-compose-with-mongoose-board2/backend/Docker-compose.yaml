@@ -1,0 +1,27 @@
+version: "3.7"
+
+# 컴퓨터들
+
+# 내백엔드컴퓨터:
+#   build:
+#     파일경로: .
+#     파일명: Dockerfile
+
+services:
+
+# 컴퓨터이름
+  my-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./index.js:/myfolder/index.js
+      - ./email.js:/myfolder/email.js
+      # - ./src:/myfolder/src 일일이 하기 귀찮다면 이런식으로 폴더 하나 만들어 한번에 처리
+    ports: 
+      - 3000:3000
+# 컴퓨터이름
+  my-database:
+    image: mongo:5
+    ports: 
+      - 27017:27017
