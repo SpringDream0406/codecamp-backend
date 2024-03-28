@@ -1,0 +1,23 @@
+c@Cliffs-MacBookAir backend % docker ps
+CONTAINER ID   IMAGE          COMMAND                   CREATED              STATUS              PORTS                    NAMES
+79bc1d41e77d   redis:latest   "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:6379->6379/tcp   backend-my-redis-1
+c@Cliffs-MacBookAir backend % docker exec -it 79bc1d41e77d /bi
+n/bash
+root@79bc1d41e77d:/data# redis-cli
+127.0.0.1:6379> keys *
+(empty array)
+127.0.0.1:6379> set qqq apple
+OK
+127.0.0.1:6379> get qqq
+"apple"
+127.0.0.1:6379> ttl qqq
+(integer) -1
+127.0.0.1:6379> expire qqq 20
+(integer) 1
+127.0.0.1:6379> ttl qqq
+(integer) 17
+127.0.0.1:6379> ttl qqq
+(integer) 0
+127.0.0.1:6379> keys *
+(empty array)
+127.0.0.1:6379> 
