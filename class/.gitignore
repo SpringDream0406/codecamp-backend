@@ -1,2 +1,5 @@
 .env
 .env.docker
+.env.dev
+.env.prod
+.env.stage
